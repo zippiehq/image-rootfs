@@ -1,0 +1,20 @@
+diff --git a/package/qemu/qemu.mk b/package/qemu/qemu.mk
+index c2872a2..9dd9689 100644
+--- a/package/qemu/qemu.mk
++++ b/package/qemu/qemu.mk
+@@ -159,6 +159,7 @@ define QEMU_CONFIGURE_CMDS
+ 		$(QEMU_VARS) \
+ 		./configure \
+ 			--prefix=/usr \
++			--static \
+ 			--cross-prefix=$(TARGET_CROSS) \
+ 			--audio-drv-list= \
+ 			--python=$(HOST_DIR)/bin/python3 \
+@@ -167,6 +168,7 @@ define QEMU_CONFIGURE_CMDS
+ 			--enable-vhost-net \
+ 			--disable-bsd-user \
+ 			--disable-containers \
++			--disable-stack-protector \
+ 			--disable-xen \
+ 			--disable-virtfs \
+ 			--disable-brlapi \
