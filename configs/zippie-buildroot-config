@@ -1973,7 +1973,7 @@ BR2_PACKAGE_QEMU=y
 #
 # Emulators selection
 #
-BR2_PACKAGE_QEMU_CUSTOM_TARGETS="x86_64-linux-user"
+BR2_PACKAGE_QEMU_CUSTOM_TARGETS="arm-linux-user aarch64-linux-user x86_64-linux-user"
 
 #
 # Networking options
