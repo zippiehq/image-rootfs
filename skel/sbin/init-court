@@ -1,0 +1,18 @@
+#! /bin/sh
+
+ROOT_DEV=/dev/mtdblock1
+ROOT_PATH=/data/court
+
+STARTUP_SCRIPT=/startup
+
+echo "Mounting court rootfs..."
+mkdir -p "$ROOT_PATH"
+mount -oro "$ROOT_DEV" "$ROOT_PATH"
+
+echo "Bind mounting kernel virtual filesystems..."
+mount --bind /dev  "$ROOT_PATH/dev"
+mount --bind /proc "$ROOT_PATH/proc"
+mount --bind /sys  "$ROOT_PATH/sys"
+
+echo "Entering chroot environment."
+exec chroot "$ROOT_PATH" "$STARTUP_SCRIPT"
