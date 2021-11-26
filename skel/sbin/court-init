@@ -3,7 +3,7 @@
 ROOT_DEV=/dev/mtdblock1
 ROOT_PATH=/data/court
 
-STARTUP_SCRIPT=/startup
+STARTUP_SCRIPT=${1:-"/startup"}
 
 echo "Mounting court rootfs..."
 mkdir -p "$ROOT_PATH"
