@@ -1,0 +1,89 @@
+From a28d3c7dcdcd2f977cd665623564d299f6139fbf Mon Sep 17 00:00:00 2001
+From: Carsten Munk <carsten@zippie.com>
+Date: Wed, 8 Dec 2021 15:57:18 +0100
+Subject: [PATCH 3/3] QEMU
+
+Signed-off-by: Carsten Munk <carsten@zippie.com>
+---
+ package/Config.in                                      | 1 +
+ package/libglib2/libglib2.mk                           | 2 ++
+ package/qemu/Config.in                                 | 2 +-
+ package/qemu/qemu.mk                                   | 2 ++
+ toolchain/toolchain-external/pkg-toolchain-external.mk | 2 --
+ 5 files changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/package/Config.in b/package/Config.in
+index cb94e30be3..42789aeae3 100644
+--- a/package/Config.in
++++ b/package/Config.in
+@@ -2524,6 +2524,7 @@ menu "System tools"
+ 	source "package/quota/Config.in"
+ 	source "package/quotatool/Config.in"
+ 	source "package/rauc/Config.in"
++	source "package/rndaddentropy/Config.in"
+ 	source "package/rsyslog/Config.in"
+ 	source "package/runc/Config.in"
+ 	source "package/s390-tools/Config.in"
+diff --git a/package/libglib2/libglib2.mk b/package/libglib2/libglib2.mk
+index af73aeb3bf..9c7dc7548c 100644
+--- a/package/libglib2/libglib2.mk
++++ b/package/libglib2/libglib2.mk
+@@ -90,6 +90,8 @@ define LIBGLIB2_REMOVE_GDB_FILES
+ endef
+ endif
+ 
++LIBGLIB2_CONF_OPTS += --default-library both
++
+ ifeq ($(BR2_PACKAGE_UTIL_LINUX_LIBMOUNT),y)
+ LIBGLIB2_CONF_OPTS += -Dlibmount=enabled
+ ifeq ($(BR2_PACKAGE_UTIL_LINUX_LIBS),y)
+diff --git a/package/qemu/Config.in b/package/qemu/Config.in
+index 7bb203a177..04fbb1156f 100644
+--- a/package/qemu/Config.in
++++ b/package/qemu/Config.in
+@@ -3,7 +3,7 @@ config BR2_PACKAGE_QEMU_ARCH_SUPPORTS_TARGET
+ 	# Only tested on these architectures
+ 	default y if BR2_aarch64 || BR2_i386 || BR2_mips || BR2_mipsel \
+ 		|| BR2_x86_64 || BR2_arm \
+-		|| BR2_powerpc64 || BR2_powerpc64le
++		|| BR2_powerpc64 || BR2_powerpc64le || BR2_riscv
+ 
+ comment "QEMU requires a toolchain with wchar, threads, gcc >= 8"
+ 	depends on BR2_PACKAGE_QEMU_ARCH_SUPPORTS_TARGET
+diff --git a/package/qemu/qemu.mk b/package/qemu/qemu.mk
+index 919aef6599..5ee1d8eb0e 100644
+--- a/package/qemu/qemu.mk
++++ b/package/qemu/qemu.mk
+@@ -183,6 +183,7 @@ define QEMU_CONFIGURE_CMDS
+ 		$(QEMU_VARS) \
+ 		./configure \
+ 			--prefix=/usr \
++			--static \
+ 			--cross-prefix=$(TARGET_CROSS) \
+ 			--audio-drv-list= \
+ 			--meson=$(HOST_DIR)/bin/meson \
+@@ -193,6 +194,7 @@ define QEMU_CONFIGURE_CMDS
+ 			--disable-bpf \
+ 			--disable-bsd-user \
+ 			--disable-containers \
++			--disable-stack-protector \
+ 			--disable-xen \
+ 			--disable-virtfs \
+ 			--disable-brlapi \
+diff --git a/toolchain/toolchain-external/pkg-toolchain-external.mk b/toolchain/toolchain-external/pkg-toolchain-external.mk
+index 4c5ae90de6..6beeb83f47 100644
+--- a/toolchain/toolchain-external/pkg-toolchain-external.mk
++++ b/toolchain/toolchain-external/pkg-toolchain-external.mk
+@@ -115,9 +115,7 @@ endif
+ 
+ TOOLCHAIN_EXTERNAL_LIBS += ld*.so.* libgcc_s.so.* libatomic.so.*
+ 
+-ifneq ($(BR2_SSP_NONE),y)
+ TOOLCHAIN_EXTERNAL_LIBS += libssp.so.*
+-endif
+ 
+ ifeq ($(BR2_TOOLCHAIN_EXTERNAL_GLIBC)$(BR2_TOOLCHAIN_EXTERNAL_UCLIBC),y)
+ TOOLCHAIN_EXTERNAL_LIBS += libc.so.* libcrypt.so.* libdl.so.* libm.so.* libnsl.so.* libresolv.so.* librt.so.* libutil.so.*
+-- 
+2.25.1
+

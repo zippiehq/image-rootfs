@@ -1,0 +1,63 @@
+From d7084b5fec1a50a7906ade5330b3cec64a2b700d Mon Sep 17 00:00:00 2001
+From: Carsten Munk <carsten@zippie.com>
+Date: Wed, 8 Dec 2021 15:54:22 +0100
+Subject: [PATCH 2/3] Add rndaddentropy
+
+Signed-off-by: Carsten Munk <carsten@zippie.com>
+---
+ package/rndaddentropy/Config.in          |  6 ++++++
+ package/rndaddentropy/rndaddentropy.hash |  1 +
+ package/rndaddentropy/rndaddentropy.mk   | 20 ++++++++++++++++++++
+ 3 files changed, 27 insertions(+)
+ create mode 100644 package/rndaddentropy/Config.in
+ create mode 100644 package/rndaddentropy/rndaddentropy.hash
+ create mode 100644 package/rndaddentropy/rndaddentropy.mk
+
+diff --git a/package/rndaddentropy/Config.in b/package/rndaddentropy/Config.in
+new file mode 100644
+index 0000000000..b25e473bca
+--- /dev/null
++++ b/package/rndaddentropy/Config.in
+@@ -0,0 +1,6 @@
++config BR2_PACKAGE_RNDADDENTROPY
++	bool "rndaddentropy"
++	help
++	  RNDADDENTROPY ioctl wrapper
++
++	  https://www.finnie.org/software/twuewand/
+diff --git a/package/rndaddentropy/rndaddentropy.hash b/package/rndaddentropy/rndaddentropy.hash
+new file mode 100644
+index 0000000000..a3451afd6f
+--- /dev/null
++++ b/package/rndaddentropy/rndaddentropy.hash
+@@ -0,0 +1 @@
++sha1  a570c2cf1ef7219765d60549cb3472031a24bf51  twuewand-3.0.0.tar.gz
+diff --git a/package/rndaddentropy/rndaddentropy.mk b/package/rndaddentropy/rndaddentropy.mk
+new file mode 100644
+index 0000000000..ad1f45bb71
+--- /dev/null
++++ b/package/rndaddentropy/rndaddentropy.mk
+@@ -0,0 +1,20 @@
++################################################################################
++#
++# rndaddentropy
++#
++################################################################################
++
++RNDADDENTROPY_VERSION = 3.0.0
++RNDADDENTROPY_SOURCE = twuewand-$(RNDADDENTROPY_VERSION).tar.gz
++RNDADDENTROPY_SITE = https://www.finnie.org/software/twuewand
++RNDADDENTROPY_LICENSE = GPL-2+
++
++define RNDADDENTROPY_BUILD_CMDS
++    $(MAKE) $(TARGET_CONFIGURE_OPTS) -C $(@D)/rndaddentropy all
++endef
++
++define RNDADDENTROPY_INSTALL_TARGET_CMDS
++    $(INSTALL) -D -m 0755 $(@D)/rndaddentropy/rndaddentropy $(TARGET_DIR)/sbin
++endef
++
++$(eval $(generic-package))
+-- 
+2.25.1
+

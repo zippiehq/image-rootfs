@@ -471,17 +471,17 @@ BR2_PACKAGE_PULSEAUDIO_HAS_ATOMIC=y
 #
 # Compressors and decompressors
 #
-BR2_PACKAGE_BROTLI=y
-BR2_PACKAGE_BZIP2=y
+# BR2_PACKAGE_BROTLI is not set
+# BR2_PACKAGE_BZIP2 is not set
 # BR2_PACKAGE_LRZIP is not set
-BR2_PACKAGE_LZIP=y
-BR2_PACKAGE_LZOP=y
-BR2_PACKAGE_P7ZIP=y
+# BR2_PACKAGE_LZIP is not set
+# BR2_PACKAGE_LZOP is not set
+# BR2_PACKAGE_P7ZIP is not set
 # BR2_PACKAGE_PIGZ is not set
 # BR2_PACKAGE_PIXZ is not set
-BR2_PACKAGE_UNRAR=y
-BR2_PACKAGE_XZ=y
-BR2_PACKAGE_ZIP=y
+# BR2_PACKAGE_UNRAR is not set
+# BR2_PACKAGE_XZ is not set
+# BR2_PACKAGE_ZIP is not set
 # BR2_PACKAGE_ZSTD is not set
 
 #
@@ -498,7 +498,7 @@ BR2_PACKAGE_ZIP=y
 #
 # dacapo needs OpenJDK
 #
-BR2_PACKAGE_DHRYSTONE=y
+# BR2_PACKAGE_DHRYSTONE is not set
 # BR2_PACKAGE_DIEHARDER is not set
 # BR2_PACKAGE_DMALLOC is not set
 # BR2_PACKAGE_DROPWATCH is not set
@@ -513,7 +513,6 @@ BR2_PACKAGE_GDB_ARCH_SUPPORTS=y
 #
 # ktap needs a Linux kernel to be built
 #
-# BR2_PACKAGE_KYUA is not set
 # BR2_PACKAGE_LATENCYTOP is not set
 # BR2_PACKAGE_LMBENCH is not set
 BR2_PACKAGE_LTP_TESTSUITE_ARCH_SUPPORTS=y
@@ -564,9 +563,9 @@ BR2_PACKAGE_PROVIDES_HOST_GETTEXT="host-gettext-tiny"
 # BR2_PACKAGE_GIT_CRYPT is not set
 # BR2_PACKAGE_GPERF is not set
 # BR2_PACKAGE_JO is not set
-BR2_PACKAGE_JQ=y
+# BR2_PACKAGE_JQ is not set
 # BR2_PACKAGE_LIBTOOL is not set
-BR2_PACKAGE_MAKE=y
+# BR2_PACKAGE_MAKE is not set
 # BR2_PACKAGE_PKGCONF is not set
 # BR2_PACKAGE_SUBVERSION is not set
 # BR2_PACKAGE_TREE is not set
@@ -674,7 +673,7 @@ BR2_PACKAGE_GENEXT2FS=y
 #
 # BR2_PACKAGE_OPENTYRIAN is not set
 # BR2_PACKAGE_PRBOOM is not set
-BR2_PACKAGE_SL=y
+# BR2_PACKAGE_SL is not set
 
 #
 # solarus needs OpenGL and a toolchain w/ C++, gcc >= 4.9, NPTL, dynamic library, and luajit or lua 5.1
@@ -702,12 +701,13 @@ BR2_PACKAGE_SL=y
 #
 # glmark2 needs an OpenGL or an openGL ES and EGL backend
 #
-# BR2_PACKAGE_GLSLSANDBOX_PLAYER is not set
+
+#
+# glslsandbox-player needs a toolchain w/ threads and an openGL ES and EGL driver
+#
 # BR2_PACKAGE_GNUPLOT is not set
 # BR2_PACKAGE_JHEAD is not set
-# BR2_PACKAGE_KMSCUBE is not set
 # BR2_PACKAGE_LIBVA_UTILS is not set
-# BR2_PACKAGE_MESA3D_DEMOS is not set
 BR2_PACKAGE_NETSURF_ARCH_SUPPORTS=y
 # BR2_PACKAGE_NETSURF is not set
 # BR2_PACKAGE_PNGQUANT is not set
@@ -734,56 +734,7 @@ BR2_PACKAGE_NETSURF_ARCH_SUPPORTS=y
 #
 # linux-fusion needs a Linux kernel to be built
 #
-BR2_PACKAGE_MESA3D=y
-BR2_PACKAGE_MESA3D_GALLIUM_DRIVER=y
-BR2_PACKAGE_MESA3D_DRIVER=y
-
-#
-# Gallium drivers
-#
-# BR2_PACKAGE_MESA3D_GALLIUM_DRIVER_ETNAVIV is not set
-
-#
-# Gallium KMSRO needs one or more renderonly drivers
-#
-# BR2_PACKAGE_MESA3D_GALLIUM_DRIVER_LIMA is not set
-# BR2_PACKAGE_MESA3D_GALLIUM_DRIVER_NOUVEAU is not set
-# BR2_PACKAGE_MESA3D_GALLIUM_DRIVER_PANFROST is not set
-BR2_PACKAGE_MESA3D_GALLIUM_DRIVER_SWRAST=y
-# BR2_PACKAGE_MESA3D_GALLIUM_DRIVER_TEGRA is not set
-# BR2_PACKAGE_MESA3D_GALLIUM_DRIVER_VIRGL is not set
-
-#
-# Gallium VDPAU state tracker needs X.org and gallium drivers r300, r600, radeonsi or nouveau
-#
-
-#
-# DRI drivers
-#
-# BR2_PACKAGE_MESA3D_DRI_DRIVER_SWRAST is not set
-# BR2_PACKAGE_MESA3D_DRI_DRIVER_NOUVEAU is not set
-
-#
-# Vulkan drivers
-#
-
-#
-# Off-screen Rendering
-#
-BR2_PACKAGE_MESA3D_OSMESA_CLASSIC=y
-
-#
-# OpenGL API Support
-#
-BR2_PACKAGE_MESA3D_GBM=y
-
-#
-# OpenGL GLX support needs X11
-#
-BR2_PACKAGE_MESA3D_OPENGL_EGL=y
-BR2_PACKAGE_MESA3D_OPENGL_ES=y
-BR2_PACKAGE_PROVIDES_LIBEGL="mesa3d"
-BR2_PACKAGE_PROVIDES_LIBGLES="mesa3d"
+# BR2_PACKAGE_MESA3D is not set
 # BR2_PACKAGE_OCRAD is not set
 
 #
@@ -796,15 +747,21 @@ BR2_PACKAGE_PROVIDES_LIBGLES="mesa3d"
 #
 # Other GUIs
 #
-BR2_PACKAGE_QT5_GL_AVAILABLE=y
 # BR2_PACKAGE_QT5 is not set
-# BR2_PACKAGE_TEKUI is not set
+
+#
+# tekui needs a Lua interpreter and a toolchain w/ threads, dynamic library
+#
 
 #
 # weston needs udev and a toolchain w/ locale, threads, dynamic library, headers >= 3.0
 #
 # BR2_PACKAGE_XORG7 is not set
 # BR2_PACKAGE_APITRACE is not set
+
+#
+# vte needs an OpenGL or an OpenGL-EGL/wayland backend
+#
 # BR2_PACKAGE_XKEYBOARD_CONFIG is not set
 
 #
@@ -1031,118 +988,8 @@ BR2_PACKAGE_HOST_ERLANG_ARCH_SUPPORTS=y
 # BR2_PACKAGE_FICL is not set
 # BR2_PACKAGE_HASERL is not set
 # BR2_PACKAGE_JIMTCL is not set
-BR2_PACKAGE_LUA=y
-BR2_PACKAGE_PROVIDES_LUAINTERPRETER="lua"
-# BR2_PACKAGE_LUA_5_1 is not set
-BR2_PACKAGE_LUA_5_3=y
-# BR2_PACKAGE_LUA_32BITS is not set
-# BR2_PACKAGE_LUA_EDITING_NONE is not set
-BR2_PACKAGE_LUA_READLINE=y
-# BR2_PACKAGE_LUA_LINENOISE is not set
-BR2_PACKAGE_HAS_LUAINTERPRETER=y
-BR2_PACKAGE_LUAINTERPRETER_ABI_VERSION="5.3"
-BR2_PACKAGE_LUAINTERPRETER_ABI_VERSION_5_3=y
+# BR2_PACKAGE_LUA is not set
 BR2_PACKAGE_PROVIDES_HOST_LUAINTERPRETER="host-lua"
-
-#
-# Lua libraries/modules
-#
-# BR2_PACKAGE_ARGPARSE is not set
-# BR2_PACKAGE_CGILUA is not set
-# BR2_PACKAGE_COPAS is not set
-# BR2_PACKAGE_COXPCALL is not set
-# BR2_PACKAGE_DADO is not set
-# BR2_PACKAGE_EASYDBUS is not set
-# BR2_PACKAGE_LBASE64 is not set
-
-#
-# ljlinenoise needs LuaJIT
-#
-
-#
-# ljsyscall needs LuaJIT
-#
-# BR2_PACKAGE_LPEG is not set
-# BR2_PACKAGE_LPTY is not set
-# BR2_PACKAGE_LRANDOM is not set
-BR2_PACKAGE_LSQLITE3=y
-# BR2_PACKAGE_LUA_BASEXX is not set
-# BR2_PACKAGE_LUA_BINARYHEAP is not set
-# BR2_PACKAGE_LUA_BIT32 is not set
-# BR2_PACKAGE_LUA_CJSON is not set
-# BR2_PACKAGE_LUA_COAT is not set
-# BR2_PACKAGE_LUA_COATPERSISTENT is not set
-# BR2_PACKAGE_LUA_CODEGEN is not set
-# BR2_PACKAGE_LUA_CQUEUES is not set
-# BR2_PACKAGE_LUA_CSNAPPY is not set
-# BR2_PACKAGE_LUA_CURL is not set
-# BR2_PACKAGE_LUA_DATAFILE is not set
-# BR2_PACKAGE_LUA_EV is not set
-# BR2_PACKAGE_LUA_FIFO is not set
-# BR2_PACKAGE_LUA_FLU is not set
-# BR2_PACKAGE_LUA_GD is not set
-# BR2_PACKAGE_LUA_HTTP is not set
-# BR2_PACKAGE_LUA_ICONV is not set
-# BR2_PACKAGE_LUA_LIVR is not set
-# BR2_PACKAGE_LUA_LIVR_EXTRA is not set
-# BR2_PACKAGE_LUA_LPEG_PATTERNS is not set
-# BR2_PACKAGE_LUA_LUNITX is not set
-# BR2_PACKAGE_LUA_LYAML is not set
-# BR2_PACKAGE_LUA_MARKDOWN is not set
-# BR2_PACKAGE_LUA_MESSAGEPACK is not set
-
-#
-# lua-msgpack-native needs Lua 5.1 or LuaJIT
-#
-# BR2_PACKAGE_LUA_PERIPHERY is not set
-# BR2_PACKAGE_LUA_RESTY_HTTP is not set
-# BR2_PACKAGE_LUA_ROTAS is not set
-# BR2_PACKAGE_LUA_SAILOR is not set
-# BR2_PACKAGE_LUA_SDL2 is not set
-# BR2_PACKAGE_LUA_SILVA is not set
-# BR2_PACKAGE_LUA_STD_DEBUG is not set
-# BR2_PACKAGE_LUA_STD_NORMALIZE is not set
-# BR2_PACKAGE_LUA_STDLIB is not set
-# BR2_PACKAGE_LUA_TESTMORE is not set
-# BR2_PACKAGE_LUA_UTF8 is not set
-# BR2_PACKAGE_LUA_VALUA is not set
-
-#
-# luabitop needs Lua 5.1
-#
-# BR2_PACKAGE_LUADBI is not set
-# BR2_PACKAGE_LUADBI_SQLITE3 is not set
-# BR2_PACKAGE_LUAEXPAT is not set
-# BR2_PACKAGE_LUAEXPATUTILS is not set
-# BR2_PACKAGE_LUAFILESYSTEM is not set
-# BR2_PACKAGE_LUAJSON is not set
-# BR2_PACKAGE_LUALOGGING is not set
-# BR2_PACKAGE_LUAOSSL is not set
-# BR2_PACKAGE_LUAPOSIX is not set
-# BR2_PACKAGE_LUASEC is not set
-# BR2_PACKAGE_LUASOCKET is not set
-# BR2_PACKAGE_LUASQL_SQLITE3 is not set
-# BR2_PACKAGE_LUASYSLOG is not set
-# BR2_PACKAGE_LUTOK is not set
-# BR2_PACKAGE_LUV is not set
-
-#
-# luvi needs LuaJIT
-#
-# BR2_PACKAGE_LZLIB is not set
-
-#
-# orbit needs a Lua 5.1 interpreter
-#
-# BR2_PACKAGE_RINGS is not set
-
-#
-# turbolua needs LuaJIT
-#
-# BR2_PACKAGE_WSAPI is not set
-# BR2_PACKAGE_WSAPI_FCGI is not set
-# BR2_PACKAGE_WSAPI_XAVANTE is not set
-# BR2_PACKAGE_XAVANTE is not set
 # BR2_PACKAGE_MICROPYTHON is not set
 BR2_PACKAGE_HOST_MONO_ARCH_SUPPORTS=y
 BR2_PACKAGE_HOST_OPENJDK_BIN_ARCH_SUPPORTS=y
@@ -1385,7 +1232,10 @@ BR2_PACKAGE_LIBDRM_HAS_ATOMIC=y
 # BR2_PACKAGE_LIBDRM_NOUVEAU is not set
 # BR2_PACKAGE_LIBDRM_ETNAVIV is not set
 # BR2_PACKAGE_LIBDRM_INSTALL_TESTS is not set
-# BR2_PACKAGE_LIBEPOXY is not set
+
+#
+# libepoxy needs an OpenGL and/or OpenGL EGL backend
+#
 # BR2_PACKAGE_LIBEXIF is not set
 
 #
@@ -1411,7 +1261,10 @@ BR2_PACKAGE_LIBDRM_HAS_ATOMIC=y
 # libglu needs an OpenGL backend
 #
 # BR2_PACKAGE_LIBGTA is not set
-# BR2_PACKAGE_LIBGTK3 is not set
+
+#
+# libgtk3 needs an OpenGL or an OpenGL-EGL/wayland backend
+#
 # BR2_PACKAGE_LIBMEDIAART is not set
 # BR2_PACKAGE_LIBMNG is not set
 # BR2_PACKAGE_LIBPNG is not set
@@ -1427,13 +1280,13 @@ BR2_PACKAGE_LIBDRM_HAS_ATOMIC=y
 # BR2_PACKAGE_LIBSVGTINY is not set
 # BR2_PACKAGE_LIBVA is not set
 # BR2_PACKAGE_LIBVIPS is not set
-# BR2_PACKAGE_LIBWPE is not set
+
+#
+# libwpe needs a toolchain w/ C++, dynamic library and an OpenEGL-capable backend
+#
 # BR2_PACKAGE_MENU_CACHE is not set
 # BR2_PACKAGE_OPENCV is not set
 # BR2_PACKAGE_OPENCV3 is not set
-BR2_PACKAGE_HAS_LIBEGL=y
-BR2_PACKAGE_HAS_LIBEGL_WAYLAND=y
-BR2_PACKAGE_HAS_LIBGLES=y
 # BR2_PACKAGE_OPENJPEG is not set
 # BR2_PACKAGE_PANGO is not set
 # BR2_PACKAGE_PANGOMM is not set
@@ -1451,7 +1304,10 @@ BR2_PACKAGE_PIXMAN=y
 # wlroots needs udev, mesa3d w/ EGL and GLES support
 #
 # BR2_PACKAGE_WOFF2 is not set
-# BR2_PACKAGE_WPEBACKEND_FDO is not set
+
+#
+# wpebackend-fdo needs a toolchain w/ C++, wchar, threads, dynamic library and an OpenEGL-capable Wayland backend
+#
 # BR2_PACKAGE_ZBAR is not set
 # BR2_PACKAGE_ZXING_CPP is not set
 
@@ -1948,7 +1804,10 @@ BR2_PACKAGE_BITCOIN_ARCH_SUPPORTS=y
 # BR2_PACKAGE_CLAMAV is not set
 # BR2_PACKAGE_COLLECTD is not set
 # BR2_PACKAGE_COLLECTL is not set
-# BR2_PACKAGE_DOMOTICZ is not set
+
+#
+# domoticz needs lua 5.3 and a toolchain w/ C++, gcc >= 4.8, NPTL, wchar, dynamic library
+#
 # BR2_PACKAGE_EMPTY is not set
 # BR2_PACKAGE_GNURADIO is not set
 # BR2_PACKAGE_GOOGLEFONTDIRECTORY is not set
@@ -2170,7 +2029,10 @@ BR2_PACKAGE_MONGREL2_LIBC_SUPPORTS=y
 # BR2_PACKAGE_PPTP_LINUX is not set
 # BR2_PACKAGE_PRIVOXY is not set
 # BR2_PACKAGE_PROFTPD is not set
-# BR2_PACKAGE_PROSODY is not set
+
+#
+# prosody needs the lua interpreter, dynamic library
+#
 # BR2_PACKAGE_PROXYCHAINS_NG is not set
 # BR2_PACKAGE_PTPD is not set
 # BR2_PACKAGE_PTPD2 is not set
