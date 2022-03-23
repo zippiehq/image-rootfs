@@ -12,7 +12,7 @@
 #
 
 ARG TOOLCHAIN_VERSION=latest
-FROM cartesi/toolchain:${TOOLCHAIN_VERSION}
+FROM cartesi/toolchain:${TOOLCHAIN_VERSION} AS buildstep
 
 LABEL maintainer="Diego Nehab <diego@cartesi.io>"
 
@@ -61,7 +61,9 @@ RUN \
     truncate -s %4096 $BUILD_BASE/artifacts/rootfs.ext2
 
 USER root
-
+RUN echo $BASE
 WORKDIR $BASE
 
-CMD ["/bin/bash", "-l"]
+FROM scratch
+ENV BUILD_BASE=/opt/riscv/rootfs
+COPY --from=buildstep $BUILD_BASE/artifacts/rootfs.ext2 $BUILD_BASE/rootfs.ext2
