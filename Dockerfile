@@ -44,8 +44,8 @@ RUN \
         https://github.com/buildroot/buildroot.git
 
 COPY skel $BUILD_BASE/buildroot/skel
-COPY cartesi-buildroot-config $BUILD_BASE/buildroot
-COPY cartesi-busybox-fragment $BUILD_BASE/buildroot
+COPY configs/zippie-buildroot-config $BUILD_BASE/buildroot/cartesi-buildroot-config
+COPY configs/default-busybox-fragment $BUILD_BASE/buildroot/cartesi-busybox-fragment
 COPY patches $BUILD_BASE/buildroot/patches
 
 # Never use -jN with buildroot
