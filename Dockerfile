@@ -11,8 +11,8 @@
 # the License.
 #
 
-ARG TOOLCHAIN_VERSION=latest
-FROM cartesi/toolchain:${TOOLCHAIN_VERSION} AS buildstep
+ARG TOOLCHAIN_VERSION=0.7.0
+FROM zippiehq/cartesi-toolchain:${TOOLCHAIN_VERSION} AS buildstep
 
 LABEL maintainer="Diego Nehab <diego@cartesi.io>"
 
